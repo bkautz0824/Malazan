@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Sparkles } from 'lucide-react';
+import { Menu, Sparkles } from 'lucide-react';
 import { charactersData } from '@/data/characters';
 import FilterSidebar from '@/components/ui/sidebar-filter';
 import ModernGroupCard from '@/components/ui/modern-group-card';

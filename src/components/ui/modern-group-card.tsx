@@ -30,7 +30,7 @@ const getTypeColor = (type: string) => {
   }
 };
 
-const getCharacterTagStyle = (character: string, type: string) => {
+const getCharacterTagStyle = (character: string) => {
   // Important characters
   if (character.includes('Whiskeyjack') || character.includes('Rake') || 
       character.includes('Coltaine') || character.includes('Itkovian') ||
@@ -125,7 +125,7 @@ export default function ModernGroupCard({ group, onCharacterClick, index }: Mode
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => onCharacterClick(character)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-200 ${getCharacterTagStyle(character, group.type)}`}
+                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-200 ${getCharacterTagStyle(character)}`}
                 >
                   {character}
                 </motion.button>

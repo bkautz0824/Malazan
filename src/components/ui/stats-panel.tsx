@@ -12,7 +12,7 @@ interface StatsPanelProps {
 }
 
 const StatCard = ({ icon: Icon, label, value, color, delay }: {
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
   label: string;
   value: number;
   color: string;
@@ -49,7 +49,6 @@ export default function StatsPanel({
   totalGroups,
   totalCharacters,
   visibleGroups,
-  visibleCharacters,
   activeFilters
 }: StatsPanelProps) {
   return (

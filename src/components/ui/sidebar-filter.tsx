@@ -2,7 +2,6 @@
 
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Search, Filter, BookOpen, Users, Sword, Crown, Sparkles, Flame } from 'lucide-react';
-import { useState } from 'react';
 
 interface FilterSidebarProps {
   isOpen: boolean;

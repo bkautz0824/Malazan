@@ -44,7 +44,6 @@ export default function BookTimeline({ activeBook, onBookChange }: BookTimelineP
         {books.map((book, index) => {
           const isActive = book.key === activeBook;
           const isPast = activeIndex > index;
-          const isFuture = activeIndex < index;
 
           return (
             <div key={book.key} className="flex items-center gap-4 flex-shrink-0">
