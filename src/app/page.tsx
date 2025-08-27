@@ -68,11 +68,11 @@ export default function Home() {
   return (
     <div>
       {/* Header */}
-      <div className="bg-black/40 backdrop-blur-[20px] p-10 text-center border-b border-slate-600 sticky top-0 z-50">
-        <h1 className="font-serif text-yellow-600 mb-4 text-4xl md:text-5xl font-bold text-shadow-lg tracking-[2px]">
+      <div className="bg-black/40 backdrop-blur-[20px] py-12 px-8 text-center border-b border-slate-600 sticky top-0 z-50">
+        <h1 className="font-serif text-yellow-600 mb-3 text-3xl md:text-4xl font-bold tracking-wide">
           Malazan Book of the Fallen
         </h1>
-        <p className="text-slate-300 text-lg font-light tracking-[0.5px]">
+        <p className="text-slate-300 text-base font-light">
           Character & Group Map • Through early Memories of Ice
         </p>
       </div>
@@ -96,24 +96,21 @@ export default function Home() {
       />
 
       {/* Main Content */}
-      <div className="p-10 max-w-[1600px] mx-auto">
-        <div className="flex flex-col gap-12">
+      <div className="px-6 py-8 max-w-7xl mx-auto">
+        <div className="space-y-12">
           {Object.keys(filteredData).length > 0 ? (
             Object.keys(filteredData).map(bookKey => {
               const book = filteredData[bookKey];
               return (
-                <div
-                  key={bookKey}
-                  className="bg-gradient-to-br from-white/[0.02] to-white/[0.05] rounded-[20px] p-10 border border-slate-600 backdrop-blur-[10px] shadow-[0_10px_40px_rgba(0,0,0,0.2)] relative overflow-hidden"
-                >
-                  {/* Top gradient line */}
-                  <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-yellow-600 via-purple-500 to-blue-500"></div>
+                <section key={bookKey} className="space-y-6">
+                  <div className="text-center">
+                    <h2 className="font-serif text-slate-50 text-2xl md:text-3xl font-semibold">
+                      {book.title}
+                    </h2>
+                    <div className="w-24 h-0.5 bg-gradient-to-r from-yellow-600 to-purple-500 mx-auto mt-3"></div>
+                  </div>
                   
-                  <h2 className="font-serif text-slate-50 text-3xl md:text-4xl mb-8 text-center font-semibold text-shadow-md tracking-wide">
-                    {book.title}
-                  </h2>
-                  
-                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8 mt-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {book.groups.map((group, index) => (
                       <GroupCard
                         key={`${bookKey}-${index}`}
@@ -122,14 +119,14 @@ export default function Home() {
                       />
                     ))}
                   </div>
-                </div>
+                </section>
               );
             })
           ) : (
-            <div className="text-center py-20 text-slate-400">
-              <div className="text-6xl mb-5 opacity-30">🔍</div>
-              <h3 className="text-2xl mb-3 text-slate-300">No Results Found</h3>
-              <p>Try adjusting your search terms or filters</p>
+            <div className="text-center py-16 text-slate-400">
+              <div className="text-4xl mb-4 opacity-50">🔍</div>
+              <h3 className="text-xl mb-2 text-slate-300">No Results Found</h3>
+              <p className="text-sm">Try adjusting your search terms or filters</p>
             </div>
           )}
         </div>
