@@ -22,14 +22,14 @@ const StatCard = ({ icon: Icon, label, value, color, delay }: {
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ delay }}
-    className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-4 border border-slate-700/50 hover:border-slate-600/50 transition-all"
+    className="bg-slate-800/50 backdrop-blur-sm rounded-xl p-8 border border-slate-700/50 hover:border-slate-600/50 transition-all"
   >
-    <div className="flex items-center gap-3">
-      <div className={`p-2 rounded-lg ${color}`}>
-        <Icon className="w-5 h-5" />
+    <div className="flex items-center gap-6">
+      <div className={`p-4 rounded-lg ${color}`}>
+        <Icon className="w-8 h-8" />
       </div>
       <div>
-        <div className="text-2xl font-bold text-slate-100">
+        <div className="text-4xl font-bold text-slate-100">
           <motion.span
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -39,7 +39,7 @@ const StatCard = ({ icon: Icon, label, value, color, delay }: {
             {value}
           </motion.span>
         </div>
-        <div className="text-sm text-slate-400">{label}</div>
+        <div className="text-lg text-slate-400">{label}</div>
       </div>
     </div>
   </motion.div>
@@ -52,7 +52,7 @@ export default function StatsPanel({
   activeFilters
 }: StatsPanelProps) {
   return (
-    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
       <StatCard
         icon={BookOpen}
         label="Total Groups"

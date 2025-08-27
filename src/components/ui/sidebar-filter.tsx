@@ -76,30 +76,30 @@ export default function FilterSidebar({
                 </button>
               </div>
 
-              <div className="flex-1 p-6 space-y-8 overflow-y-auto">
+              <div className="flex-1 p-8 space-y-12 overflow-y-auto">
                 {/* Search */}
-                <div className="space-y-3">
-                  <label className="text-sm font-medium text-slate-300 uppercase tracking-wide">
+                <div className="space-y-6">
+                  <label className="text-base font-medium text-slate-300 uppercase tracking-wide">
                     Search
                   </label>
                   <div className="relative">
-                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-slate-400" />
                     <input
                       type="text"
                       value={searchTerm}
                       onChange={(e) => onSearchChange(e.target.value)}
                       placeholder="Search characters, groups..."
-                      className="w-full pl-10 pr-4 py-3 bg-slate-800/50 border border-slate-600 rounded-xl text-slate-100 placeholder-slate-400 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 transition-all"
+                      className="w-full pl-12 pr-6 py-4 bg-slate-800/50 border border-slate-600 rounded-xl text-slate-100 placeholder-slate-400 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 transition-all text-base"
                     />
                   </div>
                 </div>
 
                 {/* Books Filter */}
-                <div className="space-y-3">
-                  <label className="text-sm font-medium text-slate-300 uppercase tracking-wide">
+                <div className="space-y-6">
+                  <label className="text-base font-medium text-slate-300 uppercase tracking-wide">
                     Books
                   </label>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {books.map((book) => {
                       const Icon = book.icon;
                       return (
@@ -108,7 +108,7 @@ export default function FilterSidebar({
                           whileHover={{ x: 4 }}
                           whileTap={{ scale: 0.98 }}
                           onClick={() => onBookFilterChange(book.key)}
-                          className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                          className={`w-full flex items-center gap-4 px-6 py-4 rounded-lg transition-all ${
                             bookFilter === book.key
                               ? 'bg-amber-500/20 border border-amber-500/40 text-amber-300'
                               : 'hover:bg-slate-800/50 text-slate-300 hover:text-slate-200'
@@ -129,11 +129,11 @@ export default function FilterSidebar({
                 </div>
 
                 {/* Types Filter */}
-                <div className="space-y-3">
-                  <label className="text-sm font-medium text-slate-300 uppercase tracking-wide">
+                <div className="space-y-6">
+                  <label className="text-base font-medium text-slate-300 uppercase tracking-wide">
                     Group Types
                   </label>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     {types.map((type) => {
                       const Icon = type.icon;
                       return (
@@ -142,7 +142,7 @@ export default function FilterSidebar({
                           whileHover={{ x: 4 }}
                           whileTap={{ scale: 0.98 }}
                           onClick={() => onTypeFilterChange(type.key)}
-                          className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-all ${
+                          className={`w-full flex items-center gap-4 px-6 py-4 rounded-lg transition-all ${
                             typeFilter === type.key
                               ? 'bg-sky-500/20 border border-sky-500/40 text-sky-300'
                               : 'hover:bg-slate-800/50 text-slate-300 hover:text-slate-200'

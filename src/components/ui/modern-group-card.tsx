@@ -60,7 +60,7 @@ export default function ModernGroupCard({ group, onCharacterClick, index }: Mode
       whileHover={{ y: -8 }}
       className="group relative"
     >
-      <div className={`relative bg-gradient-to-br ${getTypeColor(group.type)} border rounded-2xl p-6 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 overflow-hidden`}>
+      <div className={`relative bg-gradient-to-br ${getTypeColor(group.type)} border rounded-2xl p-10 backdrop-blur-sm hover:shadow-2xl transition-all duration-500 overflow-hidden`}>
         {/* Animated background glow */}
         <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className={`absolute inset-0 bg-gradient-to-br ${getTypeColor(group.type)} blur-xl`} />
@@ -69,23 +69,23 @@ export default function ModernGroupCard({ group, onCharacterClick, index }: Mode
         {/* Content */}
         <div className="relative z-10">
           {/* Header */}
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center gap-4">
+          <div className="flex items-start justify-between mb-8">
+            <div className="flex items-center gap-6">
               <motion.div
                 whileHover={{ scale: 1.1, rotate: 5 }}
-                className="w-12 h-12 bg-slate-800/50 rounded-xl flex items-center justify-center text-2xl border border-slate-700/50"
+                className="w-16 h-16 bg-slate-800/50 rounded-xl flex items-center justify-center text-3xl border border-slate-700/50"
               >
                 {getTypeIcon(group.type)}
               </motion.div>
               <div>
-                <h3 className="text-xl font-bold text-slate-100 mb-1 group-hover:text-white transition-colors">
+                <h3 className="text-2xl font-bold text-slate-100 mb-3 group-hover:text-white transition-colors">
                   {group.name}
                 </h3>
-                <div className="flex items-center gap-2 text-sm text-slate-400">
+                <div className="flex items-center gap-4 text-base text-slate-400">
                   <span className="capitalize font-medium">{group.type}</span>
                   <span>•</span>
-                  <div className="flex items-center gap-1">
-                    <Users className="w-3 h-3" />
+                  <div className="flex items-center gap-2">
+                    <Users className="w-4 h-4" />
                     <span>{group.characters.length}</span>
                   </div>
                 </div>
@@ -100,22 +100,22 @@ export default function ModernGroupCard({ group, onCharacterClick, index }: Mode
           </div>
 
           {/* Description */}
-          <p className="text-slate-300 text-sm leading-relaxed mb-6 group-hover:text-slate-200 transition-colors">
+          <p className="text-slate-300 text-lg leading-relaxed mb-10 group-hover:text-slate-200 transition-colors">
             {group.description}
           </p>
 
           {/* Character Tags */}
-          <div className="space-y-3">
+          <div className="space-y-6">
             <div className="flex items-center justify-between">
-              <span className="text-xs uppercase tracking-wide text-slate-400 font-medium">
+              <span className="text-sm uppercase tracking-wide text-slate-400 font-medium">
                 Key Characters
               </span>
-              <span className="text-xs text-slate-500">
+              <span className="text-sm text-slate-500">
                 {group.characters.length} total
               </span>
             </div>
             
-            <div className="flex flex-wrap gap-2 max-h-32 overflow-y-auto scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-600">
+            <div className="flex flex-wrap gap-4 max-h-40 overflow-y-auto scrollbar-thin scrollbar-track-slate-800 scrollbar-thumb-slate-600">
               {group.characters.slice(0, 8).map((character, idx) => (
                 <motion.button
                   key={idx}
@@ -125,13 +125,13 @@ export default function ModernGroupCard({ group, onCharacterClick, index }: Mode
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={() => onCharacterClick(character)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-all duration-200 ${getCharacterTagStyle(character)}`}
+                  className={`px-5 py-3 rounded-lg text-sm font-medium border transition-all duration-200 ${getCharacterTagStyle(character)}`}
                 >
                   {character}
                 </motion.button>
               ))}
               {group.characters.length > 8 && (
-                <div className="px-3 py-1.5 rounded-lg text-xs font-medium bg-slate-800/50 text-slate-400 border border-slate-700/50">
+                <div className="px-5 py-3 rounded-lg text-sm font-medium bg-slate-800/50 text-slate-400 border border-slate-700/50">
                   +{group.characters.length - 8} more
                 </div>
               )}

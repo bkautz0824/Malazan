@@ -139,8 +139,8 @@ export default function Home() {
         />
 
         {/* Main Content */}
-        <main className="flex-1 p-6 lg:p-8 overflow-hidden">
-          <div className="max-w-6xl mx-auto space-y-8">
+        <main className="flex-1 p-12 lg:p-16 overflow-hidden">
+          <div className="max-w-6xl mx-auto space-y-12">
             {/* Stats Panel */}
             <StatsPanel
               totalGroups={stats.totalGroups}
@@ -151,8 +151,8 @@ export default function Home() {
             />
 
             {/* Book Timeline */}
-            <div className="space-y-4">
-              <h2 className="text-lg font-semibold text-slate-100 flex items-center gap-2">
+            <div className="space-y-8">
+              <h2 className="text-2xl font-semibold text-slate-100 flex items-center gap-4">
                 <span>📚</span>
                 Book Timeline
               </h2>
@@ -163,7 +163,7 @@ export default function Home() {
             </div>
 
             {/* Groups Grid */}
-            <div className="space-y-6">
+            <div className="space-y-10">
               <AnimatePresence mode="wait">
                 {Object.keys(filteredData).length > 0 ? (
                   <motion.div
@@ -171,26 +171,26 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="space-y-8"
+                    className="space-y-16"
                   >
                     {Object.keys(filteredData).map(bookKey => {
                       const book = filteredData[bookKey];
                       return (
-                        <section key={bookKey} className="space-y-6">
+                        <section key={bookKey} className="space-y-10">
                           <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             className="text-center"
                           >
-                            <h3 className="text-xl font-semibold text-slate-200 mb-2">
+                            <h3 className="text-3xl font-semibold text-slate-200 mb-4">
                               {book.title}
                             </h3>
-                            <div className="text-sm text-slate-400">
+                            <div className="text-lg text-slate-400">
                               {book.groups.length} group{book.groups.length !== 1 ? 's' : ''} found
                             </div>
                           </motion.div>
                           
-                          <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+                          <div className="grid grid-cols-1 xl:grid-cols-2 gap-10">
                             {book.groups.map((group, index) => (
                               <ModernGroupCard
                                 key={`${bookKey}-${index}`}
