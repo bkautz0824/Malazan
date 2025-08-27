@@ -66,16 +66,20 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen">
       {/* Header */}
-      <div className="bg-black/40 backdrop-blur-[20px] py-12 px-8 text-center border-b border-slate-600 sticky top-0 z-50">
-        <h1 className="font-serif text-yellow-600 mb-3 text-3xl md:text-4xl font-bold tracking-wide">
-          Malazan Book of the Fallen
-        </h1>
-        <p className="text-slate-300 text-base font-light">
-          Character & Group Map • Through early Memories of Ice
-        </p>
-      </div>
+      <header className="bg-slate-900/95 backdrop-blur-xl border-b border-slate-700 sticky top-0 z-50 shadow-lg">
+        <div className="max-w-7xl mx-auto px-6 py-8">
+          <div className="text-center space-y-3">
+            <h1 className="heading-display text-amber-400 text-4xl md:text-5xl">
+              Malazan Book of the Fallen
+            </h1>
+            <p className="text-slate-400 text-lg font-medium">
+              Character & Group Map • Through early Memories of Ice
+            </p>
+          </div>
+        </div>
+      </header>
 
       {/* Search Controls */}
       <SearchControls
@@ -96,21 +100,21 @@ export default function Home() {
       />
 
       {/* Main Content */}
-      <div className="px-6 py-8 max-w-7xl mx-auto">
-        <div className="space-y-12">
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="space-y-16">
           {Object.keys(filteredData).length > 0 ? (
             Object.keys(filteredData).map(bookKey => {
               const book = filteredData[bookKey];
               return (
-                <section key={bookKey} className="space-y-6">
-                  <div className="text-center">
-                    <h2 className="font-serif text-slate-50 text-2xl md:text-3xl font-semibold">
+                <section key={bookKey} className="space-y-8">
+                  <div className="text-center space-y-4">
+                    <h2 className="heading-large text-slate-100 text-3xl md:text-4xl">
                       {book.title}
                     </h2>
-                    <div className="w-24 h-0.5 bg-gradient-to-r from-yellow-600 to-purple-500 mx-auto mt-3"></div>
+                    <div className="w-32 h-1 bg-gradient-to-r from-amber-500 to-sky-500 mx-auto rounded-full"></div>
                   </div>
                   
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
                     {book.groups.map((group, index) => (
                       <GroupCard
                         key={`${bookKey}-${index}`}
@@ -123,14 +127,18 @@ export default function Home() {
               );
             })
           ) : (
-            <div className="text-center py-16 text-slate-400">
-              <div className="text-4xl mb-4 opacity-50">🔍</div>
-              <h3 className="text-xl mb-2 text-slate-300">No Results Found</h3>
-              <p className="text-sm">Try adjusting your search terms or filters</p>
+            <div className="text-center py-24 space-y-6">
+              <div className="text-6xl opacity-30">🔍</div>
+              <div className="space-y-2">
+                <h3 className="text-2xl font-semibold text-slate-300">No Results Found</h3>
+                <p className="text-slate-500 max-w-md mx-auto">
+                  Try adjusting your search terms or filters to find characters and groups
+                </p>
+              </div>
             </div>
           )}
         </div>
-      </div>
+      </main>
     </div>
   );
 }

@@ -9,72 +9,88 @@ interface GroupCardProps {
 
 export default function GroupCard({ group, onCharacterClick }: GroupCardProps) {
   const getTypeBadgeClass = (type: string) => {
-    const baseClasses = "px-3 py-1.5 rounded-lg text-xs font-semibold uppercase tracking-wide";
+    const baseClasses = "inline-flex items-center px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider border";
     switch (type) {
       case 'military':
-        return `${baseClasses} bg-red-500/20 text-red-300 border border-red-500/50`;
+        return `${baseClasses} bg-red-500/15 text-red-300 border-red-500/30`;
       case 'ascendant':
-        return `${baseClasses} bg-purple-500/20 text-purple-300 border border-purple-500/50`;
+        return `${baseClasses} bg-sky-500/15 text-sky-300 border-sky-500/30`;
       case 'noble':
-        return `${baseClasses} bg-yellow-600/20 text-yellow-300 border border-yellow-600/50`;
+        return `${baseClasses} bg-amber-500/15 text-amber-300 border-amber-500/30`;
       case 'cult':
-        return `${baseClasses} bg-green-500/20 text-green-300 border border-green-500/50`;
+        return `${baseClasses} bg-teal-500/15 text-teal-300 border-teal-500/30`;
       default:
-        return `${baseClasses} bg-slate-500/20 text-slate-300 border border-slate-500/50`;
+        return `${baseClasses} bg-slate-500/15 text-slate-300 border-slate-500/30`;
     }
   };
 
   const getCharacterTagClass = (character: string) => {
-    let baseClasses = "bg-slate-600/30 text-slate-200 px-3 py-1.5 rounded-full text-sm font-medium border border-slate-500/40 transition-all duration-200 cursor-pointer hover:bg-slate-500/40 hover:border-slate-400/60";
+    // Default styling
+    let classes = "inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-slate-700/50 text-slate-200 border border-slate-600/50 transition-all duration-200 cursor-pointer hover:bg-slate-600/60 hover:border-slate-500/70 hover:text-slate-100";
     
-    // Important characters
+    // Important characters - Gold styling
     if (character.includes('Whiskeyjack') || character.includes('Rake') || 
         character.includes('Coltaine') || character.includes('Itkovian') ||
         character.includes('Dujek') || character.includes('Sha\'ik') ||
         character.includes('Quick Ben') || character.includes('Kalam') ||
         character.includes('Brukhalian')) {
-      baseClasses = "bg-yellow-600/20 text-yellow-200 px-3 py-1.5 rounded-full text-sm font-semibold border border-yellow-600/50 transition-all duration-200 cursor-pointer hover:bg-yellow-600/30 hover:border-yellow-500/70";
+      classes = "inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-amber-500/15 text-amber-200 border border-amber-500/40 transition-all duration-200 cursor-pointer hover:bg-amber-500/25 hover:border-amber-400/60 hover:text-amber-100";
     }
     
-    // Ascendant characters  
+    // Ascendant characters - Sky blue styling (replacing purple)
     if (character.includes('Shadowthrone') || character.includes('Cotillion') || 
         character.includes('Rake') || character.includes('T\'lan Imass') ||
         character.includes('Silverfox') || character.includes('Mhybe') ||
         character.includes('Anomander') || character.includes('Korlat')) {
-      baseClasses = "bg-purple-500/20 text-purple-200 px-3 py-1.5 rounded-full text-sm font-semibold border border-purple-500/50 transition-all duration-200 cursor-pointer hover:bg-purple-500/30 hover:border-purple-400/70";
+      classes = "inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-sky-500/15 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer hover:bg-sky-500/25 hover:border-sky-400/60 hover:text-sky-100";
     }
     
-    return baseClasses;
+    return classes;
   };
 
   return (
-    <div className="bg-slate-800/60 border border-slate-600/50 rounded-xl p-6 transition-all duration-300 hover:bg-slate-800/80 hover:border-slate-500/70 hover:shadow-lg">
-      {/* Header */}
-      <div className="flex items-start justify-between gap-4 mb-4">
-        <div className="flex items-center gap-3">
-          <div className="text-2xl">{group.iconEmoji}</div>
-          <div>
-            <h3 className="text-slate-50 text-lg font-semibold font-serif leading-tight">
+    <article className="group bg-slate-900/50 border border-slate-700/60 rounded-2xl p-8 transition-all duration-300 hover:bg-slate-900/70 hover:border-slate-600/80 hover:shadow-xl hover:shadow-slate-900/20">
+      {/* Header Section - Gestalt Proximity */}
+      <header className="space-y-6 mb-8">
+        {/* Icon and Title Group */}
+        <div className="flex items-start gap-4">
+          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-slate-800/50 rounded-xl text-2xl">
+            {group.iconEmoji}
+          </div>
+          <div className="flex-1 space-y-3">
+            <h3 className="heading-large text-slate-100 text-xl leading-tight">
               {group.name}
             </h3>
-            <span className={getTypeBadgeClass(group.type)}>
-              {group.type}
-            </span>
+            <div>
+              {/* Type Badge with proper spacing */}
+              <span className={getTypeBadgeClass(group.type)}>
+                {group.type}
+              </span>
+            </div>
           </div>
         </div>
+      </header>
+      
+      {/* Description Section - Clear separation */}
+      <div className="space-y-8 mb-8">
+        <p className="text-body text-slate-300 text-base leading-relaxed">
+          {group.description}
+        </p>
       </div>
       
-      {/* Description */}
-      <p className="text-slate-300 text-sm leading-relaxed mb-6">
-        {group.description}
-      </p>
-      
-      {/* Characters */}
-      <div>
-        <div className="text-slate-400 text-xs font-medium uppercase tracking-wide mb-3">
-          Characters ({group.characters.length})
+      {/* Characters Section - Gestalt Grouping */}
+      <footer className="space-y-6">
+        <div className="flex items-center justify-between">
+          <h4 className="text-caption text-slate-400">
+            Characters
+          </h4>
+          <span className="inline-flex items-center justify-center w-8 h-8 bg-slate-800/50 text-slate-400 text-sm font-medium rounded-full">
+            {group.characters.length}
+          </span>
         </div>
-        <div className="flex flex-wrap gap-2">
+        
+        {/* Character Tags with proper spacing */}
+        <div className="flex flex-wrap gap-3">
           {group.characters.map((character, index) => (
             <button
               key={index}
@@ -85,7 +101,7 @@ export default function GroupCard({ group, onCharacterClick }: GroupCardProps) {
             </button>
           ))}
         </div>
-      </div>
-    </div>
+      </footer>
+    </article>
   );
 }

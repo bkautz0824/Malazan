@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Cinzel } from "next/font/google";
+import { Inter, Crimson_Pro } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,9 +7,9 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const cinzel = Cinzel({
+const crimsonPro = Crimson_Pro({
   subsets: ["latin"],
-  variable: "--font-cinzel",
+  variable: "--font-crimson-pro",
   weight: ["400", "600", "700"],
 });
 
@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${cinzel.variable} antialiased font-sans`}
+        className={`${inter.variable} ${crimsonPro.variable} antialiased font-sans`}
       >
         {children}
       </body>
