@@ -25,44 +25,44 @@ export default function GroupCard({ group, onCharacterClick }: GroupCardProps) {
   };
 
   const getCharacterTagClass = (character: string) => {
-    // Default styling
-    let classes = "inline-flex items-center px-4 py-2 rounded-lg text-sm font-medium bg-slate-700/50 text-slate-200 border border-slate-600/50 transition-all duration-200 cursor-pointer hover:bg-slate-600/60 hover:border-slate-500/70 hover:text-slate-100";
+    // Default styling with massive padding
+    let classes = "inline-flex items-center px-6 py-4 rounded-xl text-base font-medium bg-slate-700/50 text-slate-200 border border-slate-600/50 transition-all duration-200 cursor-pointer hover:bg-slate-600/60 hover:border-slate-500/70 hover:text-slate-100 min-h-[48px]";
     
-    // Important characters - Gold styling
+    // Important characters - Gold styling with generous padding
     if (character.includes('Whiskeyjack') || character.includes('Rake') || 
         character.includes('Coltaine') || character.includes('Itkovian') ||
         character.includes('Dujek') || character.includes('Sha\'ik') ||
         character.includes('Quick Ben') || character.includes('Kalam') ||
         character.includes('Brukhalian')) {
-      classes = "inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-amber-500/15 text-amber-200 border border-amber-500/40 transition-all duration-200 cursor-pointer hover:bg-amber-500/25 hover:border-amber-400/60 hover:text-amber-100";
+      classes = "inline-flex items-center px-6 py-4 rounded-xl text-base font-semibold bg-amber-500/15 text-amber-200 border border-amber-500/40 transition-all duration-200 cursor-pointer hover:bg-amber-500/25 hover:border-amber-400/60 hover:text-amber-100 min-h-[48px]";
     }
     
-    // Ascendant characters - Sky blue styling (replacing purple)
+    // Ascendant characters - Sky blue styling with generous padding
     if (character.includes('Shadowthrone') || character.includes('Cotillion') || 
         character.includes('Rake') || character.includes('T\'lan Imass') ||
         character.includes('Silverfox') || character.includes('Mhybe') ||
         character.includes('Anomander') || character.includes('Korlat')) {
-      classes = "inline-flex items-center px-4 py-2 rounded-lg text-sm font-semibold bg-sky-500/15 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer hover:bg-sky-500/25 hover:border-sky-400/60 hover:text-sky-100";
+      classes = "inline-flex items-center px-6 py-4 rounded-xl text-base font-semibold bg-sky-500/15 text-sky-200 border border-sky-500/40 transition-all duration-200 cursor-pointer hover:bg-sky-500/25 hover:border-sky-400/60 hover:text-sky-100 min-h-[48px]";
     }
     
     return classes;
   };
 
   return (
-    <article className="group bg-slate-900/50 border border-slate-700/60 rounded-2xl p-8 transition-all duration-300 hover:bg-slate-900/70 hover:border-slate-600/80 hover:shadow-xl hover:shadow-slate-900/20">
-      {/* Header Section - Gestalt Proximity */}
-      <header className="space-y-6 mb-8">
+    <article className="group bg-slate-900/50 border border-slate-700/60 rounded-3xl p-12 transition-all duration-300 hover:bg-slate-900/70 hover:border-slate-600/80 hover:shadow-xl hover:shadow-slate-900/20">
+      {/* Header Section - Massive breathing room */}
+      <header className="space-y-8 mb-12">
         {/* Icon and Title Group */}
-        <div className="flex items-start gap-4">
-          <div className="flex-shrink-0 w-12 h-12 flex items-center justify-center bg-slate-800/50 rounded-xl text-2xl">
+        <div className="flex items-start gap-8">
+          <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center bg-slate-800/50 rounded-2xl text-3xl">
             {group.iconEmoji}
           </div>
-          <div className="flex-1 space-y-3">
-            <h3 className="heading-large text-slate-100 text-xl leading-tight">
+          <div className="flex-1 space-y-6">
+            <h3 className="heading-large text-slate-100 text-2xl leading-tight">
               {group.name}
             </h3>
             <div>
-              {/* Type Badge with proper spacing */}
+              {/* Type Badge with generous spacing */}
               <span className={getTypeBadgeClass(group.type)}>
                 {group.type}
               </span>
@@ -71,26 +71,26 @@ export default function GroupCard({ group, onCharacterClick }: GroupCardProps) {
         </div>
       </header>
       
-      {/* Description Section - Clear separation */}
-      <div className="space-y-8 mb-8">
-        <p className="text-body text-slate-300 text-base leading-relaxed">
+      {/* Description Section - Massive separation */}
+      <div className="mb-12">
+        <p className="text-body text-slate-300 text-lg leading-loose px-2">
           {group.description}
         </p>
       </div>
       
-      {/* Characters Section - Gestalt Grouping */}
-      <footer className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h4 className="text-caption text-slate-400">
+      {/* Characters Section - Lots of breathing room */}
+      <footer className="space-y-8">
+        <div className="flex items-center justify-between px-2">
+          <h4 className="text-caption text-slate-400 text-base">
             Characters
           </h4>
-          <span className="inline-flex items-center justify-center w-8 h-8 bg-slate-800/50 text-slate-400 text-sm font-medium rounded-full">
+          <span className="inline-flex items-center justify-center w-10 h-10 bg-slate-800/50 text-slate-400 text-base font-medium rounded-full">
             {group.characters.length}
           </span>
         </div>
         
-        {/* Character Tags with proper spacing */}
-        <div className="flex flex-wrap gap-3">
+        {/* Character Tags with massive spacing */}
+        <div className="flex flex-wrap gap-4 p-2">
           {group.characters.map((character, index) => (
             <button
               key={index}
